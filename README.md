@@ -1,5 +1,5 @@
-# MyPortfolio
-My portfloio backend writed with Django framework.
+# About this Project
+A dockerized blank django framework project.
 
 # Useful Links
  - [Documentation: Django 3.2](https://docs.djangoproject.com/en/3.2/)
