@@ -2,12 +2,19 @@ from django.db import models
 
 
 class Aluno(models.Model):
+    """
     class Documento(models.IntegerChoices):
         RG = 0
         CPF = 1
-    nome = models.CharField(max_length=30, blank=False, null=False)
-    documento = models.CharField(max_length=11, blank=False, null=False, unique=True)
     tipo_documento = models.IntegerField(choices=Documento.choices, blank=False, null=False)
+    """
+    Documento = (
+        (0, 'RG'),
+        (1, 'CPF')
+    )
+    tipo_documento = models.SmallIntegerField(choices=Documento, blank=False, null=False)
+    documento = models.CharField(max_length=11, blank=False, null=False, unique=True)
+    nome = models.CharField(max_length=30, blank=False, null=False)
     data_nascimento = models.DateField(blank=False, null=False)
 
     def __str__(self):
@@ -40,4 +47,4 @@ class Matricula(models.Model):
     periodo = models.CharField(max_length=1, choices=Periodo, blank=False, null=False, default='M')
 
     def __str__(self):
-        return self.curso + " - " + self.aluno
+        return str(self.curso) + " - " + str(self.aluno)
