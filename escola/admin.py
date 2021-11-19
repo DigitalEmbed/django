@@ -1,0 +1,26 @@
+from django.contrib import admin
+from escola.models import Aluno, Curso, Matricula
+
+
+class TabelaAlunos(admin.ModelAdmin):
+    list_display = ('id', 'nome', 'documento', 'tipo_documento', 'data_nascimento')
+    list_display_links = ('id', 'nome')
+    search_fields = ('nome', 'tipo_documento', 'documento')
+    list_per_page = 20
+
+
+class TabelaCursos(admin.ModelAdmin):
+    list_display = ('id', 'nome', 'codigo', 'descricao', 'nivel')
+    list_display_links = ('id', 'nome')
+    search_fields = ('nome', 'codigo', 'nivel')
+    list_per_page = 20
+
+class TabelaMatriculas(admin.ModelAdmin):
+    list_display = ('id', 'aluno', 'curso', 'periodo')
+    list_display_links = ('id', 'aluno', 'curso', 'periodo')
+    search_fields = ('aluno', 'curso', 'periodo')
+    list_per_page = 20
+
+admin.site.register(Aluno, TabelaAlunos)
+admin.site.register(Curso, TabelaCursos)
+admin.site.register(Matricula, TabelaMatriculas)
